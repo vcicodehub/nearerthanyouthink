@@ -83,7 +83,7 @@ jobs:
           script: |
             set -e
             cd ${{ secrets.DEPLOY_PATH }}
-            mkdir -p /var/www/certbot
+            sudo install -d -m 755 /var/www/certbot
             docker compose pull nearerthanyouthink
             docker compose up -d nearerthanyouthink
             if [ -f /etc/letsencrypt/live/nearerthanyouthink.com/fullchain.pem ] && [ -f /etc/letsencrypt/live/nearerthanyouthink.com/privkey.pem ]; then

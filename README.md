@@ -58,6 +58,8 @@ mkdir -p /opt/noor-luca
 
 Set `DEPLOY_PATH` to the same path.
 
+The deploy user must also be able to run `sudo install -d -m 755 /var/www/certbot` without an interactive password prompt, or you can create that directory manually before the first deploy.
+
 ### 3. Push to main
 
 Push to `main` once so GitHub Actions can upload the Compose and nginx config files and start the site container.
