@@ -38,11 +38,15 @@ In your GitHub repo go to **Settings → Secrets and variables → Actions** and
 
 | Secret | Value |
 |---|---|
-| `VPS_HOST` | Your VPS IP address or hostname |
+| `TAILSCALE_OAUTH_CLIENT_ID` | Tailscale OAuth client ID with device write access |
+| `TAILSCALE_OAUTH_SECRET` | Tailscale OAuth client secret |
+| `VPS_HOST` | Your VPS Tailscale IP address or MagicDNS hostname |
 | `VPS_USER` | SSH username (e.g. `root`) |
 | `VPS_PORT` | Optional SSH port if your VPS does not use `22` |
 | `VPS_SSH_KEY` | Your full private SSH key (`-----BEGIN OPENSSH PRIVATE KEY-----` block) |
 | `DEPLOY_PATH` | Absolute path to the folder containing `docker-compose.yml` on the VPS |
+
+The deploy job joins your Tailnet as `tag:ci` before copying files or opening the SSH connection, so the VPS does not need to expose SSH to the public internet. Make sure your Tailscale ACL allows the OAuth client to create devices with `tag:ci`.
 
 ### 2. Create the VPS deploy folder
 
