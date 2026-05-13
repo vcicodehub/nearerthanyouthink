@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nearer Than You Think — You are not as far from God as you feel</title>
+  <meta name="description" content="Whatever you're carrying, wherever you are — Jesus is closer than you feel. A quiet space for the spiritually curious, the hurting, and the searching." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nearer Than You Think" />
+  <meta property="og:description" content="Whatever you're carrying, wherever you are — Jesus is closer than you feel." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nearerthanyouthink.com" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#1e1a16" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — NearerThanYouThink.com
+    ============================================================ */
+    :root {
+      /* Backgrounds */
+      --bg:          #f4efe6;
+      --bg-warm:     #ede7da;
+      --bg-muted:    #f9f6f1;
+      --bg-dark:     #1e1a16;
+      --bg-charcoal: #2c2720;
+      --bg-section:  #f0ebe1;
+
+      /* Text */
+      --ink:         #26211a;
+      --ink-body:    #3d3428;
+      --ink-muted:   #7a6b5a;
+      --ink-faint:   #a09282;
+      --cream:       #f4efe6;
+      --cream-dim:   rgba(244,239,230,0.7);
+      --cream-faint: rgba(244,239,230,0.4);
+
+      /* Accents */
+      --amber:       #c4915a;
+      --amber-light: #ddb07a;
+      --amber-deep:  #a0733f;
+      --amber-pale:  rgba(196,145,90,0.12);
+      --dusty-blue:  #7a9ab0;
+      --olive:       #7c8c6a;
+
+      /* Borders & UI */
+      --border:      rgba(58,52,40,0.1);
+      --border-amber:rgba(196,145,90,0.22);
+      --shadow-sm:   0 2px 16px rgba(26,21,14,0.06);
+      --shadow-md:   0 8px 40px rgba(26,21,14,0.10);
+      --shadow-lg:   0 24px 72px rgba(26,21,14,0.16);
+
+      /* Type */
+      --serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:   'DM Sans', system-ui, -apple-system, sans-serif;
+
+      /* Radii */
+      --r-sm:   6px;
+      --r-md:   12px;
+      --r-lg:   20px;
+      --r-xl:   32px;
+
+      /* Motion */
+      --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --dur:    0.35s;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink-body);
+      background: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--sans); }
+    ::selection { background: rgba(196,145,90,0.25); color: var(--ink); }
+
+    /* Film grain — subtle, fixed overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY
+    ============================================================ */
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.18; }
+
+    .d-hero   { font-size: clamp(3rem, 6.5vw, 5.6rem); font-family: var(--serif); font-weight: 400; line-height: 1.06; letter-spacing: -0.02em; }
+    .d-xl     { font-size: clamp(2.6rem, 5vw,  4.2rem); font-family: var(--serif); font-weight: 400; line-height: 1.1;  letter-spacing: -0.015em; }
+    .d-lg     { font-size: clamp(2rem,   3.5vw, 3rem);   font-family: var(--serif); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; }
+    .d-md     { font-size: clamp(1.5rem, 2.5vw, 2.1rem); font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+    .d-sm     { font-size: clamp(1.2rem, 1.8vw, 1.55rem); font-family: var(--serif); font-weight: 400; line-height: 1.3; }
+
+    .overline {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    /* ============================================================
+       LAYOUT
+    ============================================================ */
+    .wrap    { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+    .wrap-md { max-width: 860px;  margin: 0 auto; padding: 0 32px; }
+    .wrap-sm { max-width: 640px;  margin: 0 auto; padding: 0 32px; }
+
+    .section    { padding: 120px 0; }
+    .section-md { padding: 88px 0; }
+    .section-sm { padding: 64px 0; }
+
+    /* ============================================================
+       BUTTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 15px 34px;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all var(--dur) var(--ease);
+      font-family: var(--sans);
+      white-space: nowrap;
+    }
+    .btn-amber {
+      background: var(--amber);
+      color: #fff;
+    }
+    .btn-amber:hover {
+      background: var(--amber-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(196,145,90,0.35);
+    }
+    .btn-ghost-light {
+      border: 1.5px solid rgba(244,239,230,0.35);
+      color: var(--cream);
+    }
+    .btn-ghost-light:hover {
+      background: rgba(244,239,230,0.08);
+      border-color: rgba(244,239,230,0.65);
+    }
+    .btn-ghost-dark {
+      border: 1.5px solid var(--border-amber);
+      color: var(--ink-body);
+    }
+    .btn-ghost-dark:hover {
+      border-color: var(--amber);
+      color: var(--amber-deep);
+      background: var(--amber-pale);
+    }
+    .btn-text {
+      color: var(--amber);
+      padding: 15px 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .btn-text .arr { transition: transform var(--dur) var(--ease); display: inline-block; }
+    .btn-text:hover .arr { transform: translateX(5px); }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 0;
+      transition: all 0.4s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(30,26,22,0.92);
+      backdrop-filter: blur(16px) saturate(140%);
+      padding: 16px 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo em { font-style: italic; color: var(--amber-light); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(244,239,230,0.6);
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color var(--dur);
+    }
+    .nav-links a:hover { color: var(--cream); }
+    .nav-pill {
+      padding: 10px 22px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(244,239,230,0.25);
+      color: var(--cream);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      transition: all var(--dur) var(--ease);
+    }
+    .nav-pill:hover {
+      background: rgba(244,239,230,0.08);
+      border-color: rgba(244,239,230,0.55);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: rgba(244,239,230,0.8);
+      transition: all var(--dur);
+    }
+
+    /* Mobile drawer */
+    .drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 44px;
+    }
+    .drawer.open { display: flex; }
+    .drawer-close {
+      position: absolute;
+      top: 28px; right: 32px;
+      font-size: 1.4rem;
+      color: rgba(244,239,230,0.5);
+      cursor: pointer;
+      background: none; border: none;
+    }
+    .drawer a {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--cream);
+      transition: color var(--dur);
+    }
+    .drawer a:hover { color: var(--amber-light); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 10vh;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-dark);
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1800&q=80');
+      background-size: cover;
+      background-position: center 20%;
+      opacity: 0.42;
+      will-change: transform;
+      transform: scale(1.04);
+      animation: hero-zoom 14s var(--ease-out) forwards;
+    }
+    @keyframes hero-zoom {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1.0);  }
+    }
+    /* Warm cinematic grade */
+    .hero-grade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top,  rgba(30,26,22,0.92) 0%, rgba(30,26,22,0.3) 45%, rgba(30,26,22,0.1) 100%),
+        linear-gradient(to right, rgba(30,26,22,0.3) 0%, transparent 60%);
+    }
+    /* Warm amber veil */
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background: rgba(120,70,20,0.08);
+      mix-blend-mode: multiply;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 120px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fade-up 1s var(--ease) 0.3s forwards;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+    }
+    .hero-eyebrow span {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      font-weight: 500;
+    }
+    .hero-headline {
+      color: var(--cream);
+      margin-bottom: 28px;
+      max-width: 720px;
+      opacity: 0;
+      animation: fade-up 1s var(--ease) 0.5s forwards;
+    }
+    .hero-headline em { font-style: italic; color: rgba(244,239,230,0.75); }
+    .hero-body {
+      color: var(--cream-dim);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 48px;
+      font-weight: 300;
+      opacity: 0;
+      animation: fade-up 1s var(--ease) 0.7s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      opacity: 0;
+      animation: fade-up 1s var(--ease) 0.9s forwards;
+    }
+    /* Scroll cue */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      right: 40px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fade-in 1s ease 1.8s forwards;
+    }
+    .scroll-word {
+      writing-mode: vertical-rl;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(244,239,230,0.3);
+    }
+    .scroll-bar {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(244,239,230,0.4), transparent);
+      animation: scroll-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%,100% { opacity:0.4; transform: scaleY(1);    }
+      50%      { opacity:1;   transform: scaleY(0.6);  }
+    }
+    @keyframes fade-up {
+      from { opacity:0; transform: translateY(28px); }
+      to   { opacity:1; transform: translateY(0);    }
+    }
+    @keyframes fade-in {
+      from { opacity:0; }
+      to   { opacity:1; }
+    }
+
+    /* ============================================================
+       VERSE DIVIDER
+    ============================================================ */
+    .verse-band {
+      background: var(--bg-section);
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .verse-band blockquote {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+    .verse-band cite {
+      display: block;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 500;
+      margin-top: 22px;
+    }
+
+    /* ============================================================
+       WHO IS JESUS
+    ============================================================ */
+    .jesus-section { background: var(--bg); }
+    .jesus-grid {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 100px;
+      align-items: center;
+    }
+    .jesus-img-wrap {
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .jesus-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--ease);
+    }
+    .jesus-img-wrap:hover img { transform: scale(1.03); }
+    .jesus-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,26,22,0.6) 0%, rgba(30,26,22,0.1) 55%, transparent 100%);
+    }
+    .jesus-img-caption {
+      position: absolute;
+      bottom: 24px; left: 24px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(244,239,230,0.75);
+      line-height: 1.4;
+    }
+    .jesus-text .overline { margin-bottom: 14px; }
+    .jesus-text h2 { color: var(--ink); margin-bottom: 28px; }
+    .jesus-text p {
+      color: var(--ink-muted);
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      margin-bottom: 22px;
+      font-weight: 300;
+    }
+    .jesus-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 44px;
+    }
+    .pillar {
+      padding: 22px 20px;
+      background: var(--bg-section);
+      border-radius: var(--r-md);
+      border-top: 2px solid var(--border-amber);
+    }
+    .pillar h4 {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      margin-bottom: 8px;
+    }
+    .pillar p {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       GOSPEL SECTION
+    ============================================================ */
+    .gospel { background: var(--bg-charcoal); position: relative; overflow: hidden; }
+    .gospel::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 55%;
+      height: 140%;
+      background: radial-gradient(ellipse, rgba(196,145,90,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .gospel-inner { position: relative; z-index: 1; }
+    .gospel h2 { color: var(--cream); margin-bottom: 16px; }
+    .gospel-sub {
+      color: var(--cream-dim);
+      font-size: 1.0625rem;
+      max-width: 560px;
+      margin-bottom: 72px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .gospel-steps {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 20px;
+    }
+    .g-step {
+      padding: 36px 28px;
+      background: rgba(244,239,230,0.03);
+      border: 1px solid rgba(244,239,230,0.07);
+      border-radius: var(--r-md);
+      transition: all var(--dur) var(--ease);
+      position: relative;
+    }
+    .g-step::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r-md);
+      border: 1px solid transparent;
+      transition: border-color var(--dur);
+    }
+    .g-step:hover {
+      background: rgba(244,239,230,0.055);
+      transform: translateY(-6px);
+    }
+    .g-step:hover::before { border-color: rgba(196,145,90,0.3); }
+    .g-num {
+      font-family: var(--serif);
+      font-size: 3.2rem;
+      font-weight: 400;
+      color: rgba(196,145,90,0.18);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+    .g-step h3 {
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--amber-light);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+    .g-step p {
+      font-size: 0.9375rem;
+      color: rgba(244,239,230,0.58);
+      line-height: 1.75;
+    }
+    .g-step .ref {
+      display: block;
+      margin-top: 18px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       INVITATION
+    ============================================================ */
+    .invite { background: var(--bg); }
+    .invite-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: start;
+    }
+    .invite-copy h2 { color: var(--ink); margin-bottom: 22px; }
+    .invite-copy p {
+      color: var(--ink-muted);
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+    .response-stack { display: grid; gap: 10px; }
+    .r-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 24px;
+      background: var(--bg-muted);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      cursor: pointer;
+      transition: all var(--dur) var(--ease);
+      width: 100%;
+      text-align: left;
+    }
+    .r-card:hover {
+      border-color: var(--border-amber);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    .r-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--bg-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .r-text strong {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+    .r-text span { font-size: 0.8125rem; color: var(--ink-faint); }
+
+    /* ============================================================
+       STRUGGLES
+    ============================================================ */
+    .struggles-section { background: var(--bg-warm); }
+    .struggles-header { margin-bottom: 64px; }
+    .struggles-header h2 { color: var(--ink); margin-bottom: 16px; }
+    .struggles-header p {
+      color: var(--ink-muted);
+      font-size: 1.0625rem;
+      max-width: 520px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .struggles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px,1fr));
+      gap: 14px;
+    }
+    .s-card {
+      padding: 30px 26px;
+      background: var(--bg);
+      border-radius: var(--r-md);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all var(--dur) var(--ease);
+      position: relative;
+    }
+    .s-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--amber);
+      border-radius: var(--r-md) var(--r-md) 0 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease);
+    }
+    .s-card:hover {
+      border-color: var(--border-amber);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+    .s-card:hover::after { transform: scaleX(1); }
+    .s-emoji { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+    .s-card h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .s-card p {
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
+    .s-ref {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       ABOUT BAND
+    ============================================================ */
+    .about-band { background: var(--bg-dark); }
+    .about-band h2 { color: var(--cream); margin-bottom: 20px; }
+    .about-band p {
+      color: var(--cream-dim);
+      font-size: 1.0625rem;
+      max-width: 580px;
+      margin: 0 auto 18px;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid rgba(244,239,230,0.06);
+      padding: 72px 0 44px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+    .footer-brand p {
+      color: rgba(244,239,230,0.38);
+      font-size: 0.875rem;
+      margin-top: 14px;
+      max-width: 280px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .footer-col h5 {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 18px;
+    }
+    .footer-col a {
+      display: block;
+      color: rgba(244,239,230,0.45);
+      font-size: 0.875rem;
+      margin-bottom: 11px;
+      transition: color var(--dur);
+      font-weight: 300;
+    }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      border-top: 1px solid rgba(244,239,230,0.06);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(244,239,230,0.25); font-weight: 300; }
+    .footer-verse {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.8125rem;
+      color: rgba(196,145,90,0.4);
+    }
+
+    /* ============================================================
+       PAGES
+    ============================================================ */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ============================================================
+       DETAIL PAGE
+    ============================================================ */
+    .detail-hero {
+      background: var(--bg-charcoal);
+      padding: 164px 0 88px;
+      position: relative;
+      overflow: hidden;
+    }
+    .detail-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -10%;
+      width: 60%; height: 160%;
+      background: radial-gradient(ellipse, rgba(196,145,90,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--amber-light);
+      font-size: 0.8125rem;
+      font-weight: 400;
+      margin-bottom: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: gap var(--dur);
+    }
+    .back-btn:hover { gap: 14px; }
+    .back-btn svg { transform: rotate(180deg); }
+    .detail-hero h1 { color: var(--cream); margin-bottom: 20px; }
+    .detail-hero .lead {
+      color: var(--cream-dim);
+      font-size: 1.0625rem;
+      max-width: 580px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .detail-body { background: var(--bg); padding: 88px 0; }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 72px;
+      align-items: start;
+    }
+
+    /* Detail main */
+    .detail-main section { margin-bottom: 60px; }
+    .detail-main .section-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber-deep);
+      margin-bottom: 14px;
+    }
+    .detail-main h2 {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .detail-main p {
+      color: var(--ink-muted);
+      font-size: 1.0625rem;
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+    .feel-list { list-style: none; display: grid; gap: 12px; margin: 18px 0; }
+    .feel-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .feel-dash { color: var(--amber); flex-shrink: 0; margin-top: 1px; }
+
+    /* Scripture block */
+    .scripture {
+      background: var(--bg-charcoal);
+      border-radius: var(--r-lg);
+      padding: 36px 40px;
+      margin: 24px 0;
+    }
+    .scripture blockquote {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-style: italic;
+      color: rgba(244,239,230,0.88);
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+    .scripture cite {
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 500;
+    }
+
+    /* Devotion */
+    .devotion {
+      border-left: 3px solid var(--amber);
+      padding: 28px 32px;
+      background: var(--bg-section);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+    }
+    .devotion p {
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0 !important;
+      line-height: 1.8;
+    }
+
+    /* Prayer prompt */
+    .prayer-box {
+      background: var(--bg-charcoal);
+      border-radius: var(--r-lg);
+      padding: 40px;
+    }
+    .prayer-box .prayer-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .prayer-box p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(244,239,230,0.82);
+      line-height: 1.8;
+      margin: 0 !important;
+    }
+
+    /* Mental health note */
+    .mh-note {
+      padding: 20px 24px;
+      background: rgba(122,154,176,0.1);
+      border: 1.5px solid rgba(122,154,176,0.25);
+      border-radius: var(--r-md);
+      margin: 28px 0;
+    }
+    .mh-note p {
+      font-size: 0.875rem !important;
+      color: var(--ink-body) !important;
+      margin: 0 !important;
+      line-height: 1.7 !important;
+      font-weight: 400 !important;
+    }
+
+    /* Steps list */
+    .step-list { list-style: none; display: grid; gap: 14px; margin: 18px 0; }
+    .step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.9375rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .step-badge {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--bg-charcoal);
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* Sidebar */
+    .sidebar { position: sticky; top: 104px; }
+    .s-box {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-md);
+      padding: 28px;
+      margin-bottom: 18px;
+    }
+    .s-box h5 {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .s-verse-list { display: grid; gap: 16px; }
+    .s-verse {
+      font-family: var(--serif);
+      font-size: 0.9375rem;
+      font-style: italic;
+      color: var(--ink-body);
+      line-height: 1.6;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .s-verse:last-child { border-bottom: none; padding-bottom: 0; }
+    .s-verse cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--amber-deep);
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+    .s-box-dark { background: var(--bg-charcoal); border-color: rgba(244,239,230,0.06); }
+    .s-box-dark h5 { color: var(--amber-light); }
+    .s-box-dark p { color: var(--cream-dim); font-size: 0.875rem; font-weight: 300; line-height: 1.7; margin-bottom: 18px; }
+    .more-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--r-sm);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      transition: all var(--dur);
+      margin-bottom: 8px;
+    }
+    .more-btn:hover { border-color: var(--border-amber); background: #fff; }
+    .more-btn span { font-size: 0.875rem; font-weight: 500; color: var(--ink); }
+
+    /* ============================================================
+       MODALS
+    ============================================================ */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30,26,22,0.75);
+      backdrop-filter: blur(6px);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: var(--bg);
+      border-radius: var(--r-xl);
+      padding: 52px;
+      max-width: 540px;
+      width: 100%;
+      position: relative;
+      max-height: 90dvh;
+      overflow-y: auto;
+      animation: modal-in 0.35s var(--ease-out);
+    }
+    @keyframes modal-in {
+      from { opacity:0; transform: scale(0.95) translateY(12px); }
+      to   { opacity:1; transform: scale(1)    translateY(0);    }
+    }
+    .modal-x {
+      position: absolute;
+      top: 22px; right: 26px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--bg-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--ink-muted);
+      cursor: pointer;
+      border: none;
+    }
+    .modal-x:hover { background: var(--bg-section); }
+    .modal h3 {
+      font-size: 1.7rem;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .modal p {
+      color: var(--ink-muted);
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .prayer-text {
+      background: var(--bg-charcoal);
+      border-radius: var(--r-md);
+      padding: 30px 34px;
+      margin: 24px 0;
+    }
+    .prayer-text p {
+      color: rgba(244,239,230,0.82);
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      font-style: italic;
+      line-height: 1.8;
+      margin: 0;
+    }
+    .modal-note { font-size: 0.8rem !important; color: var(--ink-faint) !important; font-style: italic; }
+    .form-field {
+      margin-bottom: 14px;
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-sm);
+      font-family: var(--sans);
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      transition: border-color var(--dur);
+      outline: none;
+      font-weight: 300;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--amber); }
+    .form-field textarea { resize: vertical; min-height: 108px; }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1080px) {
+      .jesus-grid { grid-template-columns: 1fr; gap: 60px; }
+      .jesus-img-wrap { aspect-ratio: 16/9; }
+      .gospel-steps { grid-template-columns: 1fr 1fr; }
+      .invite-grid { grid-template-columns: 1fr; gap: 52px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .detail-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 80px 0; }
+      .wrap, .wrap-md, .wrap-sm { padding: 0 20px; }
+      .nav-links, .nav-pill { display: none; }
+      .hamburger { display: flex; }
+      .gospel-steps { grid-template-columns: 1fr; }
+      .jesus-pillars { grid-template-columns: 1fr; }
+      .struggles-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .modal { padding: 36px 28px; border-radius: var(--r-lg); }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-scroll { display: none; }
+    }
+    @media (max-width: 480px) {
+      .struggles-grid { grid-template-columns: 1fr; }
+      .d-hero { font-size: 2.6rem; }
+    }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .text-center { text-align: center; }
+    .mt-sm { margin-top: 12px; }
+    .mt-md { margin-top: 28px; }
+    .mt-lg { margin-top: 48px; }
+    .mt-xl { margin-top: 72px; }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" onclick="goHome()">Nearer Than <em>You Think</em></a>
+      <ul class="nav-links">
+        <li><a href="#" onclick="goHome()">Home</a></li>
+        <li><a href="#carrying">What Are You Carrying?</a></li>
+        <li><a href="#" onclick="openM('follow')">Follow Jesus</a></li>
+        <li><a href="#" onclick="openM('prayer')">Prayer</a></li>
+      </ul>
+      <a href="#" class="nav-pill" onclick="openM('follow')">Begin here</a>
+      <button class="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+  <a href="#" onclick="goHome(); toggleDrawer()">Home</a>
+  <a href="#carrying" onclick="toggleDrawer()">What Are You Carrying?</a>
+  <a href="#" onclick="openM('follow'); toggleDrawer()">Follow Jesus</a>
+  <a href="#" onclick="openM('prayer'); toggleDrawer()">Request Prayer</a>
+</div>
+
+<!-- ============================================================
+     HOME PAGE
+============================================================ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-img" role="img" aria-label="Misty mountains at dawn, soft amber light breaking through clouds"></div>
+    <div class="hero-grade"></div>
+    <div class="hero-veil"></div>
+    <div class="wrap" style="width:100%">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>A place to breathe</span>
+        </div>
+        <h1 class="d-hero hero-headline">
+          Nearer than<br /><em>you think.</em>
+        </h1>
+        <p class="hero-body">
+          Whatever you're carrying. Wherever you are.
+          However far God feels — you are not as far from Him
+          as you believe.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-amber" onclick="openM('follow')">I want to know Jesus</button>
+          <button class="btn btn-ghost-light" onclick="document.getElementById('carrying').scrollIntoView({behavior:'smooth'})">
+            I'm going through something
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span class="scroll-word">Scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- VERSE BAND -->
+  <div class="verse-band">
+    <div class="wrap-sm">
+      <blockquote>
+        "Come to me, all you who are weary and burdened,
+        and I will give you rest."
+        <cite>— Matthew 11:28</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- WHO IS JESUS -->
+  <section class="jesus-section section">
+    <div class="wrap">
+      <div class="jesus-grid">
+        <div class="jesus-img-wrap reveal">
+          <img
+            src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=900&q=80"
+            alt="Morning light filtering softly through tall trees in a quiet forest"
+            loading="lazy"
+          />
+          <div class="jesus-img-overlay"></div>
+          <p class="jesus-img-caption">"I am the light of the world."<br />— John 8:12</p>
+        </div>
+        <div class="jesus-text">
+          <span class="overline reveal">Who is Jesus?</span>
+          <h2 class="d-xl reveal">Not a religion.<br />A person.</h2>
+          <p class="reveal delay-1">
+            Jesus is not a set of rules, a distant judge, or an institution.
+            He is the Son of God who stepped into human history — not to
+            shame the broken, but to reach them.
+          </p>
+          <p class="reveal delay-2">
+            He sat with people no one else would sit with. He spoke tenderly
+            to those society had discarded. He wept at a friend's grave.
+            He invited the exhausted to rest. In Jesus, we see what God is
+            actually like — and it is far more compassionate and patient
+            than most of us were ever told.
+          </p>
+          <p class="reveal delay-3">
+            Christianity isn't primarily about behavior improvement.
+            It's reconciliation — being brought back into a real relationship
+            with the God who made you and has never stopped loving you.
+          </p>
+          <div class="jesus-pillars reveal delay-4">
+            <div class="pillar">
+              <h4>He came near</h4>
+              <p>Left glory to reach the lost, the grieving, and the overlooked.</p>
+            </div>
+            <div class="pillar">
+              <h4>He forgives fully</h4>
+              <p>No past is too dark. No failure disqualifies you from grace.</p>
+            </div>
+            <div class="pillar">
+              <h4>He rose</h4>
+              <p>Death is not the end. He defeated it — and offers that life to you.</p>
+            </div>
+            <div class="pillar">
+              <h4>He invites</h4>
+              <p>Come as you are. He loves you too much to leave you unchanged.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOSPEL -->
+  <section class="gospel section">
+    <div class="wrap">
+      <div class="gospel-inner">
+        <span class="overline reveal">The story that changes everything</span>
+        <h2 class="d-xl reveal" style="color:var(--cream)">Why Jesus matters<br />for your life</h2>
+        <p class="gospel-sub reveal delay-1">
+          There's a reason so many people across centuries and cultures have found
+          Jesus to be the turning point of their lives. Here it is, told honestly.
+        </p>
+        <div class="gospel-steps">
+          <div class="g-step reveal">
+            <div class="g-num">01</div>
+            <h3>You were made for relationship</h3>
+            <p>God created human beings for deep connection with Him — not as servants, but as beloved children. That longing for something more? It was placed there by design.</p>
+            <span class="ref">Genesis 1:27 · Psalm 139</span>
+          </div>
+          <div class="g-step reveal delay-1">
+            <div class="g-num">02</div>
+            <h3>Something went wrong</h3>
+            <p>We chose our own way over God's — not just in dramatic moments, but in the quiet everyday choices that push Him to the margins. The Bible calls this sin, and none of us are exempt.</p>
+            <span class="ref">Romans 3:23 · Isaiah 59:2</span>
+          </div>
+          <div class="g-step reveal delay-2">
+            <div class="g-num">03</div>
+            <h3>God came to rescue us</h3>
+            <p>Jesus — fully God, fully human — took the weight of our separation from God on Himself at the cross. He was buried. He rose on the third day. The grave did not hold Him.</p>
+            <span class="ref">John 3:16 · Romans 5:8 · 1 Cor. 15:3–4</span>
+          </div>
+          <div class="g-step reveal delay-3">
+            <div class="g-num">04</div>
+            <h3>You can receive it</h3>
+            <p>Forgiveness and new life are not earned — they are received through faith in Jesus Christ. This means trusting Him, surrendering to Him, and beginning to walk with Him one day at a time.</p>
+            <span class="ref">Ephesians 2:8–9 · Romans 10:9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITATION -->
+  <section class="invite section">
+    <div class="wrap">
+      <div class="invite-grid">
+        <div class="invite-copy">
+          <span class="overline reveal">Where are you today?</span>
+          <h2 class="d-xl reveal">You don't have to<br />have it together.</h2>
+          <p class="reveal delay-1">
+            Jesus never waited for people to clean themselves up before He
+            approached them. He showed up in the middle of the mess, the
+            doubt, the grief, the shame. He meets you exactly where you are.
+          </p>
+          <p class="reveal delay-2">
+            Wherever you are — curious, skeptical, hurting, or ready —
+            there is a gentle next step here for you. Take the one
+            that feels most honest.
+          </p>
+        </div>
+        <div class="response-stack reveal delay-2">
+          <button class="r-card" onclick="openM('follow')">
+            <div class="r-icon">✝</div>
+            <div class="r-text">
+              <strong>I want to follow Jesus</strong>
+              <span>A simple prayer and a place to begin</span>
+            </div>
+          </button>
+          <button class="r-card" onclick="openM('curious')">
+            <div class="r-icon">🔍</div>
+            <div class="r-text">
+              <strong>I'm curious, but not sure</strong>
+              <span>Honest questions are welcome here</span>
+            </div>
+          </button>
+          <button class="r-card" onclick="openM('prayer')">
+            <div class="r-icon">🙏</div>
+            <div class="r-text">
+              <strong>I need prayer</strong>
+              <span>Share what's on your heart</span>
+            </div>
+          </button>
+          <button class="r-card" onclick="document.getElementById('carrying').scrollIntoView({behavior:'smooth'})">
+            <div class="r-icon">💬</div>
+            <div class="r-text">
+              <strong>I'm struggling with something</strong>
+              <span>Find honest words for what you're carrying</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRUGGLES -->
+  <section class="struggles-section section" id="carrying">
+    <div class="wrap">
+      <div class="struggles-header">
+        <span class="overline reveal">You are seen here</span>
+        <h2 class="d-xl reveal">What are you<br />carrying today?</h2>
+        <p class="reveal delay-1">
+          Jesus was no stranger to human pain. Whatever you're facing,
+          He has walked close to it.
+        </p>
+      </div>
+      <div class="struggles-grid" id="struggles-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT BAND -->
+  <section class="about-band section text-center">
+    <div class="wrap-sm">
+      <span class="overline reveal" style="color:var(--amber)">About this space</span>
+      <h2 class="d-lg reveal" style="color:var(--cream);margin-bottom:22px">
+        This is not a church<br />trying to recruit you.
+      </h2>
+      <p class="reveal delay-1">
+        This is a quiet place for people who may have heard something,
+        felt something stir, and wondered if it was real. We believe it was.
+      </p>
+      <p class="reveal delay-2">
+        Everything here is built around one conviction: Jesus meets people
+        exactly where they are. We just want to point you toward Him.
+      </p>
+      <div class="mt-lg reveal delay-3">
+        <button class="btn btn-amber" onclick="openM('prayer')">Request Prayer</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+<!-- ============================================================
+     DETAIL PAGE (dynamic)
+============================================================ -->
+<div id="page-detail" class="page">
+  <div class="detail-hero">
+    <div class="wrap-md">
+      <button class="back-btn" onclick="goHome()">
+        <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to home
+      </button>
+      <span class="overline" id="d-label"></span>
+      <h1 class="d-xl" id="d-headline"></h1>
+      <p class="lead" id="d-lead"></p>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="wrap-md">
+      <div class="detail-layout">
+        <div class="detail-main" id="d-main"></div>
+        <div class="sidebar" id="d-sidebar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Nearer Than <em style="font-style:italic;color:var(--amber-light)">You Think</em></div>
+        <p>A quiet space for the spiritually curious, the hurting, and the searching — to encounter Jesus without pretense.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <a href="#" onclick="goHome()">Home</a>
+        <a href="#carrying">Life Struggles</a>
+        <a href="#" onclick="openM('follow')">Follow Jesus</a>
+      </div>
+      <div class="footer-col">
+        <h5>Reach Out</h5>
+        <a href="#" onclick="openM('prayer')">Prayer Request</a>
+        <a href="#" onclick="openM('curious')">I Have Questions</a>
+      </div>
+      <div class="footer-col">
+        <h5>Topics</h5>
+        <a href="#" onclick="showS('anxiety')">Anxiety & Fear</a>
+        <a href="#" onclick="showS('grief')">Grief & Loss</a>
+        <a href="#" onclick="showS('shame')">Shame</a>
+        <a href="#" onclick="showS('doubt')">Doubt</a>
+        <a href="#" onclick="showS('far-from-god')">Far from God</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 NearerThanYouThink.com — Built with care for weary people.</p>
+      <p class="footer-verse">"He heals the brokenhearted." — Psalm 147:3</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MODALS
+============================================================ -->
+
+<!-- Follow Jesus -->
+<div class="overlay" id="overlay-follow" onclick="closeOnBg(event,'overlay-follow')">
+  <div class="modal">
+    <button class="modal-x" onclick="closeM('overlay-follow')">✕</button>
+    <span class="overline">A prayer of faith</span>
+    <h3>I want to follow Jesus</h3>
+    <p>What matters most is not the perfect words — it's the sincere desire of your heart to turn toward God and trust in Jesus. If that's where you are, you might pray something like this:</p>
+    <div class="prayer-text">
+      <p>"God, I come to You honestly. I know I've lived apart from You — choosing my own way over Yours. I believe that Jesus is Your Son, that He died to carry my sin, and that He rose again. I don't want to live separated from You anymore. I turn to You now. Forgive me. Come into my life. I trust You with all of it — the past, the present, and whatever comes next. Amen."</p>
+    </div>
+    <p>If that prayer came from a real place in you — something has changed. This is the beginning of a life with God, not the end of a transaction. Keep reading the Bible (start with the Gospel of John). Find a community of people who follow Jesus. Talk to Him often. He is real, and He is near.</p>
+    <p class="modal-note">What God sees is not a perfect formula, but the sincere turning of your heart.</p>
+  </div>
+</div>
+
+<!-- Curious -->
+<div class="overlay" id="overlay-curious" onclick="closeOnBg(event,'overlay-curious')">
+  <div class="modal">
+    <button class="modal-x" onclick="closeM('overlay-curious')">✕</button>
+    <span class="overline">Questions are welcome here</span>
+    <h3>Still figuring it out</h3>
+    <p>Doubt isn't the opposite of faith — it's often the beginning of it. Jesus never turned away someone who came to Him honestly, even with hard questions.</p>
+    <p style="font-weight:500;color:var(--ink);margin-bottom:12px">A few honest starting places:</p>
+    <ul class="step-list">
+      <li><span class="step-badge">1</span>Read the Gospel of John — it's short, personal, and written for people exploring Jesus.</li>
+      <li><span class="step-badge">2</span>Explore the struggle topics on this site — faith speaks into real life, not just abstract theology.</li>
+      <li><span class="step-badge">3</span>Pray even if you're not sure anyone is listening. "God, if You're real, show me" is a completely honest place to start.</li>
+      <li><span class="step-badge">4</span>Find a local church or a trusted person who follows Jesus and ask your hardest questions.</li>
+    </ul>
+    <div style="margin-top:24px">
+      <button class="btn btn-amber" style="width:100%;justify-content:center" onclick="closeM('overlay-curious');openM('prayer')">Request Prayer Instead</button>
+    </div>
+  </div>
+</div>
+
+<!-- Prayer -->
+<div class="overlay" id="overlay-prayer" onclick="closeOnBg(event,'overlay-prayer')">
+  <div class="modal">
+    <button class="modal-x" onclick="closeM('overlay-prayer')">✕</button>
+    <span class="overline">Someone will genuinely pray for you</span>
+    <h3>Request Prayer</h3>
+    <p>You don't have to explain everything perfectly. Share what's on your heart — as much or as little as you'd like — and someone will pray for you with genuine care.</p>
+    <form onsubmit="handlePrayer(event)">
+      <div class="form-field">
+        <input type="text" placeholder="Your first name (optional)" autocomplete="given-name" />
+      </div>
+      <div class="form-field">
+        <input type="email" placeholder="Email (optional — if you'd like a personal response)" autocomplete="email" />
+      </div>
+      <div class="form-field">
+        <textarea placeholder="What would you like prayer for?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center">Send Prayer Request</button>
+    </form>
+    <p class="modal-note" style="margin-top:14px">Your information is kept private and will never be shared or used for marketing. This is a place of genuine care.</p>
+  </div>
+</div>
+
+<!-- Thanks -->
+<div class="overlay" id="overlay-thanks" onclick="closeOnBg(event,'overlay-thanks')">
+  <div class="modal" style="text-align:center;padding:52px 44px">
+    <button class="modal-x" onclick="closeM('overlay-thanks')">✕</button>
+    <div style="font-size:2.4rem;margin-bottom:22px">🙏</div>
+    <h3 style="margin-bottom:14px">Your request was received.</h3>
+    <p>Someone will be praying for you. You are not forgotten.</p>
+    <p class="modal-note">"The Lord is near to all who call on him." — Psalm 145:18</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     DATA & LOGIC
+============================================================ -->
+<script>
+/* ======================================================
+   STRUGGLE DATA
+====================================================== */
+const DATA = [
+  {
+    id:'anxiety', emoji:'🫁', title:'Anxiety',
+    short:'That constant tightness in your chest. The racing thoughts at 2 am. The fear you can\'t quite name.',
+    ref:'Philippians 4:6–7',
+    label:'For the anxious heart',
+    headline:'Your worry is not weakness.',
+    lead:'Anxiety doesn\'t mean your faith is broken. It means you are human. And Jesus speaks directly into this.',
+    mh:true,
+    sideVerses:[
+      {t:'"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God."',r:'Philippians 4:6'},
+      {t:'"Cast all your anxiety on him because he cares for you."',r:'1 Peter 5:7'},
+      {t:'"Peace I leave with you; my peace I give you. I do not give to you as the world gives."',r:'John 14:27'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'You might recognize this',items:['A baseline hum of dread you can\'t explain','Scrolling at night to avoid your own thoughts','Constant mental rehearsal of worst-case scenarios','Feeling like you\'re failing even when nothing is wrong','A sense that everyone else has it together except you']},
+      {type:'offer',label:'What Jesus offers',h:'Not a switch. A presence.',body:['Jesus did not tell anxious people to try harder. He spoke peace into storms. He invited the burdened to come to Him — not with a performance, but with all of it.','The peace He offers isn\'t the absence of hard things. It\'s a presence that holds you in the middle of them. The Bible doesn\'t say "don\'t feel afraid." It says "I am with you."']},
+      {type:'scripture',q:'"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."',r:'Philippians 4:6–7'},
+      {type:'scripture',q:'"Even though I walk through the darkest valley, I will fear no evil, for you are with me."',r:'Psalm 23:4'},
+      {type:'devotion',body:'There is a difference between having anxiety and being ruled by it. Jesus doesn\'t erase every nervous feeling — He offers a deeper foundation. When the storm comes, and it will, you are not standing on sand. You are held by Someone who spoke to a physical storm and it went quiet. He can speak to yours too.'},
+      {type:'step',label:'A practical next step',h:'Try this today',body:'For the next week, when anxiety spikes, pause and say out loud: "God, I give this to You." Don\'t wait until you feel peace to pray — pray until it comes. Philippians 4 calls this "the peace that passes understanding," which means it doesn\'t need your circumstances to change first.'},
+      {type:'prayer',body:'"God, I\'m tired of carrying this. Right now, in this moment of fear and spinning thoughts — I choose to give it to You. You said You\'d guard my heart and mind. I\'m trusting that. Help me believe it. Amen."'},
+    ]
+  },
+  {
+    id:'fear', emoji:'🌑', title:'Fear',
+    short:'Fear of the future. Fear of failure. Fear of being truly known. Fear that everything will fall apart.',
+    ref:'Isaiah 41:10',
+    label:'For the afraid',
+    headline:'Fear is not your destiny.',
+    lead:'Something has shaken you. And underneath it, you wonder if you are truly safe. Jesus meets you here.',
+    mh:false,
+    sideVerses:[
+      {t:'"So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you."',r:'Isaiah 41:10'},
+      {t:'"There is no fear in love. But perfect love drives out fear."',r:'1 John 4:18'},
+      {t:'"The Lord is my light and my salvation — whom shall I fear?"',r:'Psalm 27:1'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'When fear takes over',items:['Lying awake running through everything that could go wrong','Avoiding things you want because you\'re afraid of failing','A persistent dread that happiness is too fragile to trust','Fear of being vulnerable — of being known and then rejected','A sense that the worst is always just around the corner']},
+      {type:'offer',label:'What Jesus offers',h:'A love stronger than your worst fear',body:['"Do not be afraid" is the most repeated command in Scripture. And it\'s almost always followed by a reason: because I am with you. The answer to fear is not courage summoned from within — it is a presence bigger than what you\'re afraid of.','Jesus was honest about the hardness of life. He didn\'t say the world would be easy. He said: "Take heart. I have overcome the world." The One who walked out of the grave is with you right now.']},
+      {type:'scripture',q:'"For I am convinced that neither death nor life, neither angels nor demons, neither the present nor the future... will be able to separate us from the love of God that is in Christ Jesus our Lord."',r:'Romans 8:38–39'},
+      {type:'devotion',body:'The opposite of fear isn\'t fearlessness — it\'s trust. Not blind optimism, but a settled knowledge that the God who holds the universe has not lost track of you. Fear whispers that you are alone in the dark. Faith says: the dark is not dark to Him.'},
+      {type:'prayer',body:'"Lord, I am afraid. I won\'t pretend I\'m not. But You said You are with me. Help me feel that today — not just know it in my head, but feel it in the moments when fear tries to take over. Amen."'},
+    ]
+  },
+  {
+    id:'grief', emoji:'🕊️', title:'Grief',
+    short:'Loss doesn\'t follow a schedule. Grief is messy and long and sometimes hits you out of nowhere.',
+    ref:'Psalm 34:18',
+    label:'For the grieving',
+    headline:'Your grief is not forgotten.',
+    lead:'Jesus wept at a friend\'s grave. He is not distant from loss — He entered it.',
+    mh:true,
+    sideVerses:[
+      {t:'"The Lord is close to the brokenhearted and saves those who are crushed in spirit."',r:'Psalm 34:18'},
+      {t:'"He heals the brokenhearted and binds up their wounds."',r:'Psalm 147:3'},
+      {t:'"Blessed are those who mourn, for they will be comforted."',r:'Matthew 5:4'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Grief looks different for everyone',items:['Waves that knock you down even when you thought you were okay','Numbness that makes you wonder if something is wrong with you','Guilt that you\'re still here when someone else is not','Anger — at God, at yourself, at how unfair it all is','The world moving on when you feel frozen in the moment of loss']},
+      {type:'offer',label:'What Jesus offers',h:'He does not rush your grief',body:['One of the shortest and most profound verses in the Bible is John 11:35: "Jesus wept." Standing at the tomb of His friend Lazarus — knowing what He was about to do — He still wept. Grief was not beneath Him.','God does not demand that you be okay. He does not ask you to skip the pain to get to the praise. He promises to be present in it. There is a future hope in Christ that is real: death is not the final word. But that hope holds you while you grieve — it doesn\'t dismiss the weight of it.']},
+      {type:'scripture',q:'"Jesus wept. Then the Jews said, \'See how he loved him!\'"',r:'John 11:35–36'},
+      {type:'scripture',q:'"He will wipe every tear from their eyes. There will be no more death or mourning or crying or pain, for the old order of things has passed away."',r:'Revelation 21:4'},
+      {type:'devotion',body:'Grief is love with nowhere to go. When someone or something you love is taken, the love doesn\'t disappear — it aches. And God, who is love, understands this ache from the inside. He did not watch suffering from a safe distance. He entered it. And He promises that every tear — including yours — is held by Him.'},
+      {type:'prayer',body:'"God, I am broken. I didn\'t expect grief to feel like this. I don\'t need answers right now — I just need to know You\'re close. I believe You weep with me. Be near. Amen."'},
+    ]
+  },
+  {
+    id:'shame', emoji:'🫣', title:'Shame',
+    short:'Not just guilt about what you\'ve done — but the feeling that you yourself are somehow the problem.',
+    ref:'Romans 8:1',
+    label:'For the ashamed',
+    headline:'You are not what you\'ve done.',
+    lead:'Shame says you are too broken to be loved. Grace says something entirely different.',
+    mh:true,
+    sideVerses:[
+      {t:'"There is now no condemnation for those who are in Christ Jesus."',r:'Romans 8:1'},
+      {t:'"If we confess our sins, he is faithful and just and will forgive us our sins and purify us from all unrighteousness."',r:'1 John 1:9'},
+      {t:'"As far as the east is from the west, so far has he removed our transgressions from us."',r:'Psalm 103:12'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Shame is heavier than guilt',items:['A voice that says "you are bad" — not just "you did something bad"','Hiding the real you, even from people who love you','Reliving past mistakes on a loop','Feeling disqualified from forgiveness, love, or purpose','Working hard to compensate for who you believe you fundamentally are']},
+      {type:'offer',label:'What Jesus offers',h:'He sought out the ones shame pushed away',body:['In the culture of Jesus\'s day, certain people were considered untouchable. Jesus went directly to them. He spoke with a woman who\'d had five failed marriages — in public. He ate with tax collectors everyone despised. He touched lepers. He forgave a woman caught in the very act of adultery.','He didn\'t pretend it didn\'t happen. He offered something better: actual forgiveness. Then He said — go, and live differently. Not "you are what your worst moment was." But "that is not who you have to be."','Romans 8:1 is one of the most freeing sentences ever written: "There is now no condemnation for those who are in Christ Jesus." None. Not for most people. Not for the sins on a list someone decided were small enough. None.']},
+      {type:'scripture',q:'"Therefore, there is now no condemnation for those who are in Christ Jesus."',r:'Romans 8:1'},
+      {type:'devotion',body:'Guilt says "I did something wrong." Shame says "I am something wrong." Jesus came to heal both — but He is especially tender with shame, because shame makes people hide. So He seeks out the hiding. He called Zacchaeus out of a tree. He appeared to Peter after Peter\'s worst moment and simply said: "Follow me." He finds the hidden and calls them by name.'},
+      {type:'prayer',body:'"God, I am ashamed. Of what I\'ve done — and of what I sometimes believe I am. I hear You saying there is no condemnation. Help me believe it down where the shame lives. Forgive me. I trust in what Jesus did, not in what I\'ve done. Amen."'},
+    ]
+  },
+  {
+    id:'loneliness', emoji:'🌧️', title:'Loneliness',
+    short:'You can be surrounded by people and still feel completely unseen. That ache is real.',
+    ref:'Psalm 68:6',
+    label:'For the lonely',
+    headline:'You are not invisible to God.',
+    lead:'Loneliness doesn\'t always mean being alone. Sometimes it means being unknown. Jesus sees what no one else sees.',
+    mh:false,
+    sideVerses:[
+      {t:'"God sets the lonely in families."',r:'Psalm 68:6'},
+      {t:'"I will never leave you nor forsake you."',r:'Hebrews 13:5'},
+      {t:'"You have searched me, Lord, and you know me."',r:'Psalm 139:1'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Loneliness is more than being alone',items:['Being in a crowded room and feeling like no one really knows you','Performing a version of yourself and exhausting yourself doing it','Watching others\' lives from the outside through a screen','A quiet sense that you don\'t quite belong anywhere','Missing connection so much it becomes a physical ache']},
+      {type:'offer',label:'What Jesus offers',h:'To be fully known and fully loved',body:['Psalm 139 describes a God who knew you before you were born, who knows every thought before you form it, who cannot go anywhere without already being there with you. You are not unseen. You are the most thoroughly known person in the universe — by the One who made you.','Jesus also called His followers friends, not servants. And in the church — the community of people walking with Jesus — He provides what no screen or surface relationship can: genuine belonging to something larger than yourself.']},
+      {type:'scripture',q:'"You have searched me, Lord, and you know me. You know when I sit and when I rise; you perceive my thoughts from afar."',r:'Psalm 139:1–2'},
+      {type:'devotion',body:'The loneliness you feel is a signal, not a flaw. It\'s pointing to the deep truth that you were made for connection — with God and with others. Jesus designed a family, not a solitary faith. He shared meals and grief and celebration with real people. If you\'re longing for that kind of belonging, you\'re longing for what is real and what is possible.'},
+      {type:'prayer',body:'"God, I am lonely — and I\'m tired of pretending I\'m not. You know me completely. Help me feel that today. And lead me toward people who follow You, so I can discover what real belonging looks like. Amen."'},
+    ]
+  },
+  {
+    id:'doubt', emoji:'🔦', title:'Doubt',
+    short:'Questioning everything doesn\'t mean you\'ve lost faith. It might mean you\'re finally being honest.',
+    ref:'Mark 9:24',
+    label:'For the doubting',
+    headline:'Honest doubt is not disqualifying.',
+    lead:'Jesus welcomed people who didn\'t have it figured out. He still does.',
+    mh:false,
+    sideVerses:[
+      {t:'"\'I do believe; help me overcome my unbelief!\'"',r:'Mark 9:24'},
+      {t:'"\'Come now, let us reason together,\' says the Lord."',r:'Isaiah 1:18'},
+      {t:'"Ask and it will be given to you; seek and you will find; knock and the door will be opened to you."',r:'Matthew 7:7'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Doubt wears many faces',items:['Intellectual questions you can\'t resolve about God, suffering, or Scripture','A feeling that faith is something other people have — but not you','Growing up in a faith community and feeling like it no longer holds up','Something terrible happened, and you\'re not sure what to believe about God anymore','Going through the motions of belief while feeling like a fraud']},
+      {type:'offer',label:'What Jesus offers',h:'He handled doubt with patience, not punishment',body:['Thomas, one of Jesus\'s closest disciples, refused to believe the resurrection until he saw it himself. Jesus didn\'t rebuke him or cut him off. He showed up, showed Thomas His wounds, and let him touch them. Then He said: "Stop doubting and believe." It was an invitation, not a threat.','The cry of Mark 9:24 — "I believe; help my unbelief!" — is one of the most honest prayers in Scripture. Jesus answered it. Doubt in the presence of God is not the end of faith. It\'s often where faith begins to get real.']},
+      {type:'scripture',q:'"Then he said to Thomas, \'Put your finger here; see my hands. Reach out your hand and put it into my side. Stop doubting and believe.\'"',r:'John 20:27'},
+      {type:'devotion',body:'Doubt is not the opposite of faith. What Jesus responds to — consistently, across the Gospels — is honest seeking. If you are genuinely searching, asking, trying to understand, you are not outside the reach of God. The invitation is to keep going. Read the Gospel of John. Pray even if you\'re not sure anyone is listening. You might be surprised.'},
+      {type:'prayer',body:'"God, I\'m not sure what I believe. But I\'m here. If You\'re real, I\'m asking You to show me. I don\'t want to fake faith — I want real faith. Help my unbelief. Amen."'},
+    ]
+  },
+  {
+    id:'purpose', emoji:'🧭', title:'Purpose',
+    short:'The quiet dread that your life might not matter. That you\'re missing the thing you were made for.',
+    ref:'Jeremiah 29:11',
+    label:'For the searching',
+    headline:'You were not made by accident.',
+    lead:'The question of purpose is not an obstacle to faith. It\'s often the doorway.',
+    mh:false,
+    sideVerses:[
+      {t:'"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, plans to give you hope and a future."',r:'Jeremiah 29:11'},
+      {t:'"For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."',r:'Ephesians 2:10'},
+      {t:'"You did not choose me, but I chose you."',r:'John 15:16'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'When purpose feels missing',items:['Going through the motions — work, scroll, sleep, repeat','Watching others seem to have direction while you feel lost','A gnawing sense you were made for something but can\'t find it','Fear that you\'ve already wasted the years that mattered','Numbness where passion and desire used to be']},
+      {type:'offer',label:'What Jesus offers',h:'A life that means something',body:['Jesus didn\'t recruit perfectly qualified people. He called fishermen, a tax collector, a political zealot, and a doubter. What made their lives significant was not their talent — it was following Him.','The Bible\'s answer to the purpose question is not a career plan. It is a person. Purpose, in the biblical understanding, flows from being known by God and joining what He is doing in the world. That is both bigger and more personal than any job title.']},
+      {type:'scripture',q:'"For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."',r:'Ephesians 2:10'},
+      {type:'devotion',body:'The word translated "handiwork" in Ephesians 2:10 is the Greek word poiema — the root of our word "poem." You are a poem written by God. Not a factory output. Not an accident. A crafted thing with intention and meaning. The question of your purpose begins not with "what am I good at?" but with "who made me, and what did He have in mind?"'},
+      {type:'prayer',body:'"God, I want my life to mean something. I confess I\'ve tried to find purpose in things that don\'t hold. I believe You made me with intention. Show me what that looks like. Lead me. I\'ll follow. Amen."'},
+    ]
+  },
+  {
+    id:'addiction', emoji:'🔗', title:'Addiction',
+    short:'You know it\'s hurting you. You\'ve tried to stop. The cycle feels unbreakable.',
+    ref:'John 8:36',
+    label:'For the bound',
+    headline:'Chains were not meant to be permanent.',
+    lead:'Addiction is not a moral failure that puts you beyond grace. It\'s a wound that needs real help — and Jesus is not afraid of it.',
+    mh:true,
+    sideVerses:[
+      {t:'"Where the Spirit of the Lord is, there is freedom."',r:'2 Corinthians 3:17'},
+      {t:'"So if the Son sets you free, you will be free indeed."',r:'John 8:36'},
+      {t:'"My grace is sufficient for you, for my power is made perfect in weakness."',r:'2 Corinthians 12:9'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'The cycle of addiction',items:['Telling yourself this time will be different — and it isn\'t','Shame spiraling back into the very thing you\'re ashamed of','Something that has more control over you than you do over it','Hiding it because you can\'t face what people would think','Exhaustion from managing a secret life']},
+      {type:'offer',label:'What Jesus offers',h:'Mercy first. Freedom as a process.',body:['Jesus is not disgusted by the bound. He went to the demoniac, the outcast, the person everyone else had given up on. He offers mercy without demanding you clean yourself up first. But He also offers freedom — not as a one-time feeling, but as a direction and a community.','Lasting freedom from addiction almost always involves both spiritual transformation and practical help. God works through honest community and through professional care. Asking for help — from God and from people — is not weakness. It\'s the beginning of healing.']},
+      {type:'scripture',q:'"So if the Son sets you free, you will be free indeed."',r:'John 8:36'},
+      {type:'devotion',body:'The grace of God is not a reason to stay stuck — it is the power to become unstuck. Paul writes that those who belong to Christ are no longer slaves to sin. That\'s not a demand; it\'s a declaration of a new identity. You are not your addiction. You are a person being reclaimed and rebuilt, one day at a time.'},
+      {type:'prayer',body:'"God, I am tired of being controlled by this. I can\'t break free on my own — I\'ve tried. I need You. I need real help. Give me the courage to reach out, to be honest, to take the next step. I believe You can set me free. Amen."'},
+    ]
+  },
+  {
+    id:'death', emoji:'🌅', title:'Death',
+    short:'Your own mortality. The loss of someone you love. The questions death raises about what anything means.',
+    ref:'John 11:25',
+    label:'For those facing death',
+    headline:'Death is not the last word.',
+    lead:'The resurrection of Jesus is the most important event in history — because it means the grave is not the end.',
+    mh:false,
+    sideVerses:[
+      {t:'"Jesus said, \'I am the resurrection and the life. The one who believes in me will live, even though they die.\'"',r:'John 11:25'},
+      {t:'"Where, O death, is your victory? Where, O death, is your sting?"',r:'1 Corinthians 15:55'},
+      {t:'"He will wipe every tear from their eyes. There will be no more death."',r:'Revelation 21:4'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Death confronts us differently',items:['A sudden, terrifying awareness of your own mortality','Fear about what happens after — if anything','Anger that the person you loved is gone','Questions that no one can fully answer','A strange hunger to know if any of this means something']},
+      {type:'offer',label:'What Jesus offers',h:'He walked through death and out the other side',body:['The resurrection of Jesus is not a metaphor or a comforting story. It is the central historical claim of Christianity — that a specific person, on a specific Sunday, walked out of a sealed tomb. The disciples who saw it were so certain that most died rather than deny it.','If Jesus rose, death is not the end — it is a door. And everything He said about eternal life, about being with God, about resurrection — all of it holds. Christianity doesn\'t offer cheap comfort about death. It offers an actual answer.']},
+      {type:'scripture',q:'"Jesus said to her, \'I am the resurrection and the life. The one who believes in me will live, even though they die; and whoever lives by believing in me will never die. Do you believe this?\'"',r:'John 11:25–26'},
+      {type:'devotion',body:'The question Jesus asked Martha at Lazarus\'s tomb was not rhetorical — it\'s the question that stands behind all the others: Do you believe this? Not "do you have it figured out?" Just: do you trust Me on this? That is where faith begins — not with perfect certainty, but with a yes spoken in the middle of grief.'},
+      {type:'prayer',body:'"Jesus, I am afraid of death — or I am grieving it in someone I love. I don\'t have perfect faith. But I choose to believe that You are who You said You are. That death is not the end. Hold me in that hope. Amen."'},
+    ]
+  },
+  {
+    id:'anger', emoji:'🔥', title:'Anger',
+    short:'Hot, burning, sometimes righteous, sometimes consuming. Anger that damages what you care about most.',
+    ref:'Ephesians 4:26',
+    label:'For the burning',
+    headline:'Anger is not the enemy. What you do with it is.',
+    lead:'Even God gets angry. But there is a kind of anger that destroys — and Jesus offers another way.',
+    mh:false,
+    sideVerses:[
+      {t:'"\'In your anger do not sin.\' Do not let the sun go down while you are still angry."',r:'Ephesians 4:26'},
+      {t:'"Everyone should be quick to listen, slow to speak and slow to become angry."',r:'James 1:19'},
+      {t:'"Get rid of all bitterness, rage and anger... Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you."',r:'Ephesians 4:31–32'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Anger wears many faces',items:['A short fuse that goes off before you can stop it','Suppressed rage that leaks out sideways into relationships','Righteous anger at injustice — with no healthy outlet','Old wounds surfacing as something sharper than you intended','Shame about how you responded — again']},
+      {type:'offer',label:'What Jesus offers',h:'Transformation, not suppression',body:['Jesus didn\'t tell people to stop feeling angry. He modeled what to do with it. He saw injustice and named it. He turned over tables in the temple — but He didn\'t let anger become hatred or revenge. He trusted that God holds justice.','The Bible\'s answer to destructive anger is not white-knuckling it — it\'s a slow transformation that comes through encountering the love and forgiveness of God. When you know you\'ve been forgiven much, the rage that comes from wounds begins to lose its grip.']},
+      {type:'scripture',q:'"Get rid of all bitterness, rage and anger... Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you."',r:'Ephesians 4:31–32'},
+      {type:'devotion',body:'Anger often signals something real — a violation, a wound, an injustice. The Psalms are full of people bringing their rawest anger directly to God. Cry out. Complain. Ask "how long?" Don\'t perform peace you don\'t have. But bring it to God, not at the people around you.'},
+      {type:'prayer',body:'"God, I am angry. And I know it\'s causing damage. I don\'t want to be controlled by this. Show me what is underneath the anger. Heal me there. And help me trust You with the justice I can\'t deliver myself. Amen."'},
+    ]
+  },
+  {
+    id:'failure', emoji:'💔', title:'Failure',
+    short:'A relationship, a career, a choice. The weight of something that didn\'t work — or something you broke.',
+    ref:'Lamentations 3:22–23',
+    label:'For the fallen',
+    headline:'Failure is not your final chapter.',
+    lead:'The disciples who failed Jesus most dramatically became the leaders of the early church. Grace writes better endings.',
+    mh:false,
+    sideVerses:[
+      {t:'"Because of the Lord\'s great love we are not consumed, for his compassions never fail. They are new every morning."',r:'Lamentations 3:22–23'},
+      {t:'"For though the righteous fall seven times, they rise again."',r:'Proverbs 24:16'},
+      {t:'"If anyone is in Christ, the new creation has come: the old has gone, the new is here!"',r:'2 Corinthians 5:17'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'When failure takes hold',items:['Replaying the moment you got it wrong on loop','Letting the failure define your identity','Withdrawal — pulling back from people and possibility','Fear that your best is behind you','Guilt tangled with grief for what could have been']},
+      {type:'offer',label:'What Jesus offers',h:'He specializes in comeback stories',body:['Peter denied knowing Jesus three times on the night of the crucifixion. Three times. And Jesus\'s first act after the resurrection — one of the very first — was to find Peter, cook breakfast on the beach, and restore him. Three times, as if to undo each denial. "Do you love me? Then feed my sheep." He gave him his purpose back.','God does not discard people who fail. He is the God of the second chance, the fresh morning, the new beginning. Lamentations 3 was written by a man watching his entire world collapse — and from that place he wrote: "His mercies are new every morning."']},
+      {type:'scripture',q:'"The steadfast love of the Lord never ceases; his mercies never come to an end; they are new every morning; great is your faithfulness."',r:'Lamentations 3:22–23'},
+      {type:'devotion',body:'Your failure is not your identity. What you did — or didn\'t do — is not who you are. In Christ, the old has gone and the new has come. That is not wishful thinking; it is a declaration of what the cross accomplished. You are not the sum of your worst decisions. You are a person being remade by grace.'},
+      {type:'prayer',body:'"God, I feel like I\'ve blown it. I don\'t want this to be the end of my story. Forgive me where I need forgiveness. Heal what I\'ve broken where healing is possible. Give me the courage to get up and try again. Amen."'},
+    ]
+  },
+  {
+    id:'forgiveness', emoji:'🌿', title:'Forgiveness',
+    short:'Needing to forgive someone who hurt you. Or needing to receive forgiveness you\'re not sure you deserve.',
+    ref:'Colossians 3:13',
+    label:'On forgiveness',
+    headline:'Forgiveness is one of the hardest things in the world.',
+    lead:'It\'s not pretending it didn\'t happen. It\'s not saying it was okay. It\'s releasing a debt — and finding a strange freedom in that release.',
+    mh:false,
+    sideVerses:[
+      {t:'"Bear with each other and forgive one another... Forgive as the Lord forgave you."',r:'Colossians 3:13'},
+      {t:'"If we confess our sins, he is faithful and just and will forgive us our sins."',r:'1 John 1:9'},
+      {t:'"As far as the east is from the west, so far has he removed our transgressions from us."',r:'Psalm 103:12'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'The weight of unforgiveness',items:['Anger that won\'t go away no matter how much time passes','Replaying what happened and what you wish you\'d said','Being told to forgive before you\'re ready — and feeling shamed for struggling','Guilt about your own actions, wondering if forgiveness is possible for you','The exhaustion of carrying all of it']},
+      {type:'offer',label:'What Jesus offers',h:'A forgiveness that flows from being forgiven',body:['The most profound thing about Christian forgiveness is its source. We aren\'t told to forgive because the other person deserves it, or because it wasn\'t that bad. We\'re told to forgive because we have been forgiven — completely, at great cost — by a God who had every right not to.','That changes the math. When you understand what was forgiven in you, forgiving others becomes an act of grace, not justice. It is still hard. But it is possible. And for receiving forgiveness: there is nothing you can do that places you beyond the reach of God\'s mercy. Nothing.']},
+      {type:'scripture',q:'"Forgive as the Lord forgave you."',r:'Colossians 3:13'},
+      {type:'devotion',body:'Forgiveness is not a feeling you wait for — it\'s a decision that slowly becomes a feeling. You may need to make that decision many times for the same wound. That is not hypocrisy; it\'s the honest work of grace. And each time you choose it, something in you loosens. The chain that has bound you to that person and that moment slowly, slowly releases.'},
+      {type:'prayer',body:'"God, I don\'t want to forgive — I want justice. But I also know what it is to need mercy. Help me receive Your forgiveness for what I\'ve done, and help it overflow into what I choose toward others. I can\'t do this on my own. Amen."'},
+    ]
+  },
+  {
+    id:'stress', emoji:'⚡', title:'Stress',
+    short:'Too much, too fast, for too long. The weight of demands that never let up.',
+    ref:'Matthew 11:28–29',
+    label:'For the overwhelmed',
+    headline:'You were not built to carry all of this alone.',
+    lead:'The pace of modern life was not designed with your soul in mind. There is a different rhythm available.',
+    mh:false,
+    sideVerses:[
+      {t:'"Come to me, all you who are weary and burdened, and I will give you rest."',r:'Matthew 11:28'},
+      {t:'"Be still, and know that I am God."',r:'Psalm 46:10'},
+      {t:'"Cast your cares on the Lord and he will sustain you."',r:'Psalm 55:22'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'Stress in a modern life',items:['Never-ending lists that multiply faster than you can finish them','No margin — no time to breathe, rest, or think','A low-grade resentment toward the demands on your life','Being so busy you\'ve lost touch with what actually matters','Running on fumes — physically, relationally, spiritually']},
+      {type:'offer',label:'What Jesus offers',h:'Rest — and a new way to carry things',body:['"Come to me, all you who are weary and burdened, and I will give you rest." The word "rest" here doesn\'t mean sleep or vacation — it means the relief of setting something down that was too heavy to carry.','Jesus says His "yoke is easy and my burden is light" — which sounds strange until you understand: a yoke is always shared. You\'re not meant to carry life alone. The invitation is into a partnership with God, where He carries what you were not built to carry by yourself.']},
+      {type:'scripture',q:'"Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls."',r:'Matthew 11:28–29'},
+      {type:'devotion',body:'The Sabbath — a rhythm God built into the structure of creation itself — is His statement that rest is not laziness. It is sacred. One day in seven was set apart not because God needed it, but because we do. In a culture that prizes endless productivity, Jesus invites you to something counter-cultural: stillness, trust, and the permission to stop.'},
+      {type:'prayer',body:'"God, I am worn out. I\'ve been running on empty and I don\'t know how to stop. You said to come to You. So I\'m coming. Show me what rest with You looks like. Help me trust You enough to put some of this down. Amen."'},
+    ]
+  },
+  {
+    id:'far-from-god', emoji:'🌌', title:'Far from God',
+    short:'You used to believe — or never did — but now God feels distant, silent, or impossible to reach.',
+    ref:'James 4:8',
+    label:'For the distant',
+    headline:'You feel far. He hasn\'t moved.',
+    lead:'The distance you feel is real. But distance is not abandonment. And the path back is shorter than you think.',
+    mh:false,
+    sideVerses:[
+      {t:'"Come near to God and he will come near to you."',r:'James 4:8'},
+      {t:'"The Lord is close to the brokenhearted."',r:'Psalm 34:18'},
+      {t:'"Where can I go from your Spirit? Where can I flee from your presence?"',r:'Psalm 139:7'},
+    ],
+    blocks:[
+      {type:'feel',label:'What this can feel like',h:'The silence of distance',items:['Praying and feeling like the words hit the ceiling','Going through motions of faith that no longer feel real','A season of life that made God feel implausible','Drifting — no dramatic departure, just a slow fade','Longing for something you once had or always wanted but can\'t find']},
+      {type:'offer',label:'What Jesus offers',h:'He was in the business of finding lost things',body:['Jesus told three stories in a row about lost things: a lost sheep, a lost coin, a lost son. In each story, the one who does the finding is not passive. The shepherd leaves 99 to find the one. The father runs toward the returning son while he is still a long way off.','James 4:8 is a remarkable promise: "Come near to God and he will come near to you." That is a pledge. Take one step toward Him.']},
+      {type:'scripture',q:'"But while he was still a long way off, his father saw him and was filled with compassion for him; he ran to his son, threw his arms around him and kissed him."',r:'Luke 15:20'},
+      {type:'devotion',body:'The prodigal son came home rehearsing a speech about not deserving to be a son anymore — just asking to be a servant. He never got to finish it. His father ran. Interrupted the speech. Called for celebration. If you have been away — for a week or a decade — that is still the posture of the Father who waits for you. You don\'t have to have your speech ready. Just come home.'},
+      {type:'prayer',body:'"God, I feel far from You. I don\'t know exactly when or how the distance grew. But I\'m turning around. I\'m taking a step toward You. Meet me in it. Amen."'},
+    ]
+  },
+];
+
+/* ======================================================
+   RENDER GRID
+====================================================== */
+function renderGrid() {
+  const g = document.getElementById('struggles-grid');
+  if (!g) return;
+  g.innerHTML = DATA.map(s => `
+    <div class="s-card reveal" onclick="showS('${s.id}')">
+      <span class="s-emoji" role="img" aria-label="${s.title}">${s.emoji}</span>
+      <h3>${s.title}</h3>
+      <p>${s.short}</p>
+      <span class="s-ref">${s.ref}</span>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+/* ======================================================
+   SHOW STRUGGLE
+====================================================== */
+function showS(id) {
+  const s = DATA.find(x => x.id === id);
+  if (!s) return;
+
+  document.getElementById('d-label').textContent   = s.label;
+  document.getElementById('d-headline').textContent = s.headline;
+  document.getElementById('d-lead').textContent     = s.lead;
+
+  const main = document.getElementById('d-main');
+  main.innerHTML = s.blocks.map(b => {
+    if (b.type === 'feel') return `
+      <section>
+        <span class="section-label">${b.label}</span>
+        <h2>${b.h}</h2>
+        <ul class="feel-list">${b.items.map(i=>`<li><span class="feel-dash">—</span>${i}</li>`).join('')}</ul>
+      </section>`;
+
+    if (b.type === 'offer') return `
+      <section>
+        <span class="section-label">${b.label}</span>
+        <h2>${b.h}</h2>
+        ${b.body.map(p=>`<p>${p}</p>`).join('')}
+      </section>`;
+
+    if (b.type === 'scripture') return `
+      <div class="scripture">
+        <blockquote>${b.q}</blockquote>
+        <cite>${b.r}</cite>
+      </div>`;
+
+    if (b.type === 'devotion') return `
+      <section>
+        <span class="section-label">A reflection</span>
+        <div class="devotion"><p>${b.body}</p></div>
+      </section>`;
+
+    if (b.type === 'step') return `
+      <section>
+        <span class="section-label">${b.label}</span>
+        <h2>${b.h}</h2>
+        <p>${b.body}</p>
+      </section>`;
+
+    if (b.type === 'prayer') return `
+      <div class="prayer-box">
+        <span class="prayer-label">A prayer for you</span>
+        <p>${b.body}</p>
+      </div>`;
+
+    return '';
+  }).join('');
+
+  if (s.mh) {
+    main.innerHTML += `
+      <div class="mh-note">
+        <p><strong>A gentle note:</strong> If you're dealing with persistent anxiety, depression, addiction, grief, trauma, or thoughts of self-harm, please consider reaching out to a pastor, counselor, or mental health professional alongside your spiritual journey. Faith and professional care aren't in opposition — they work together. In crisis, please call or text <strong>988</strong> (Suicide & Crisis Lifeline).</p>
+      </div>`;
+  }
+
+  main.innerHTML += `
+    <section style="text-align:center;padding:48px 0 0">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:14px">Keep going</span>
+      <h2 style="margin-bottom:16px;color:var(--ink)">You are not alone in this.</h2>
+      <p style="margin-bottom:36px;color:var(--ink-muted);font-weight:300">Jesus meets you here. Take one more step.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-amber" onclick="openM('follow')">I want to follow Jesus</button>
+        <button class="btn btn-ghost-dark" onclick="openM('prayer')">Request Prayer</button>
+      </div>
+    </section>`;
+
+  const sb = document.getElementById('d-sidebar');
+  const others = DATA.filter(x=>x.id!==id).slice(0,4);
+  sb.innerHTML = `
+    <div class="s-box">
+      <h5>Key Scriptures</h5>
+      <div class="s-verse-list">
+        ${s.sideVerses.map(v=>`
+          <div class="s-verse">${v.t}<cite>${v.r}</cite></div>
+        `).join('')}
+      </div>
+    </div>
+    <div class="s-box s-box-dark">
+      <h5>You are not alone</h5>
+      <p>Someone will genuinely pray for whatever you're carrying. Share it with us.</p>
+      <button class="btn btn-amber" style="width:100%;justify-content:center" onclick="openM('prayer')">Request Prayer</button>
+    </div>
+    <div class="s-box" style="background:var(--bg-section)">
+      <h5>Explore more</h5>
+      ${others.map(x=>`
+        <button class="more-btn" onclick="showS('${x.id}')">
+          <span style="font-size:1.1rem">${x.emoji}</span>
+          <span>${x.title}</span>
+        </button>
+      `).join('')}
+    </div>`;
+
+  showPage('detail');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ======================================================
+   PAGE ROUTING
+====================================================== */
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-'+name);
+  if (el) el.classList.add('active');
+}
+function goHome() {
+  showPage('home');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(observeReveal, 80);
+}
+
+/* ======================================================
+   MODALS
+====================================================== */
+function openM(id) {
+  closeAllModals();
+  const el = document.getElementById('overlay-'+id);
+  if (el) { el.classList.add('open'); document.body.style.overflow='hidden'; }
+}
+function closeM(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeAllModals() {
+  document.querySelectorAll('.overlay').forEach(o => o.classList.remove('open'));
+}
+function closeOnBg(e, id) {
+  if (e.target===e.currentTarget) closeM(id);
+}
+function handlePrayer(e) {
+  e.preventDefault();
+  closeM('overlay-prayer');
+  openM('thanks');
+}
+
+/* ======================================================
+   MOBILE DRAWER
+====================================================== */
+function toggleDrawer() {
+  const d = document.getElementById('drawer');
+  d.classList.toggle('open');
+  document.body.style.overflow = d.classList.contains('open') ? 'hidden' : '';
+}
+
+/* ======================================================
+   NAV SCROLL
+====================================================== */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 32);
+}, {passive:true});
+
+/* ======================================================
+   SCROLL REVEAL
+====================================================== */
+function observeReveal() {
+  const els = document.querySelectorAll('.reveal:not(.in)');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.08, rootMargin:'0px 0px -48px 0px' });
+  els.forEach(el => io.observe(el));
+}
+
+/* ======================================================
+   KEYBOARD
+====================================================== */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeAllModals();
+    document.body.style.overflow='';
+    const d = document.getElementById('drawer');
+    if (d.classList.contains('open')) { d.classList.remove('open'); document.body.style.overflow=''; }
+  }
+});
+
+/* ======================================================
+   INIT
+====================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  renderGrid();
+  observeReveal();
+});
+</script>
+</body>
+</html>
