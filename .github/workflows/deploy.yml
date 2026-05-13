@@ -53,6 +53,19 @@ jobs:
     needs: build-and-push
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload VPS config
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "docker-compose.yml,nginx.conf"
+          target: ${{ secrets.DEPLOY_PATH }}
+
       - name: SSH and redeploy
         uses: appleboy/ssh-action@v1
         with:
@@ -63,5 +76,13 @@ jobs:
           script: |
             set -e
             cd ${{ secrets.DEPLOY_PATH }}
+            mkdir -p /var/www/certbot
             docker compose pull nearerthanyouthink
             docker compose up -d nearerthanyouthink
+            if [ -f /etc/letsencrypt/live/nearerthanyouthink.com/fullchain.pem ] && [ -f /etc/letsencrypt/live/nearerthanyouthink.com/privkey.pem ]; then
+              docker compose up -d nginx
+              docker compose exec -T nginx nginx -t
+              docker compose exec -T nginx nginx -s reload
+            else
+              echo "Skipping nginx start: Let's Encrypt certificate is not provisioned yet."
+            fi

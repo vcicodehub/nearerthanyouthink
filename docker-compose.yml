@@ -1,6 +1,6 @@
 services:
   nearerthanyouthink:
-    image: ${NTYT_IMAGE:-ghcr.io/vangu/nearerthanyouthink:latest}
+    image: ${NTYT_IMAGE:-ghcr.io/vcicodehub/nearerthanyouthink:latest}
     container_name: nearerthanyouthink
     restart: unless-stopped
     networks:

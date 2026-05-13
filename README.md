@@ -24,25 +24,15 @@ NearerThanYouThink/
 
 Every push to `main`:
 1. GitHub Actions builds a Docker image and pushes it to GitHub Container Registry (GHCR)
-2. Actions SSHes into the VPS and runs `docker compose pull` + `docker compose up -d`
-3. The site is live within ~60 seconds
+2. Actions uploads `docker-compose.yml` and `nginx.conf` to the VPS
+3. Actions SSHes into the VPS and restarts the site container
+4. If the Let's Encrypt certificate exists, Actions also starts/reloads nginx
 
 ---
 
 ## First-Time Setup
 
-### 1. Fix the image name placeholder
-
-In `docker-compose.yml` on your VPS, replace the placeholder with your actual GitHub username (lowercase):
-
-```yaml
-nearerthanyouthink:
-  image: ${NTYT_IMAGE:-ghcr.io/YOUR_GITHUB_USERNAME/nearerthanyouthink:latest}
-```
-
-You can also set `NTYT_IMAGE=ghcr.io/YOUR_GITHUB_USERNAME/nearerthanyouthink:latest` in the VPS shell or a Compose `.env` file.
-
-### 2. Add GitHub Actions secrets
+### 1. Add GitHub Actions secrets
 
 In your GitHub repo go to **Settings → Secrets and variables → Actions** and add:
 
@@ -54,7 +44,21 @@ In your GitHub repo go to **Settings → Secrets and variables → Actions** and
 | `VPS_SSH_KEY` | Your full private SSH key (`-----BEGIN OPENSSH PRIVATE KEY-----` block) |
 | `DEPLOY_PATH` | Absolute path to the folder containing `docker-compose.yml` on the VPS |
 
-### 3. Provision the SSL certificate on the VPS
+### 2. Create the VPS deploy folder
+
+Run this once on the VPS:
+
+```bash
+mkdir -p /opt/noor-luca
+```
+
+Set `DEPLOY_PATH` to the same path.
+
+### 3. Push to main
+
+Push to `main` once so GitHub Actions can upload the Compose and nginx config files and start the site container.
+
+### 4. Provision the SSL certificate on the VPS
 
 The nginx config expects a Let's Encrypt cert for `nearerthanyouthink.com`. Run this on the VPS:
 
@@ -70,21 +74,18 @@ certbot certonly --standalone \
 docker compose start nginx
 ```
 
-### 4. Upload the updated VPS config files
-
-Upload the updated `docker-compose.yml` and `nginx.conf` from this repository to your VPS, then apply them:
+You can use the nginx webroot for future certificate renewals:
 
 ```bash
-# Start the new container
-docker compose up -d nearerthanyouthink
-
-# Reload nginx to pick up the new server block
-docker compose exec nginx nginx -s reload
+certbot certonly --webroot \
+  -w /var/www/certbot \
+  -d nearerthanyouthink.com \
+  -d www.nearerthanyouthink.com
 ```
 
 ### 5. Push to main
 
-From this point forward, any push to `main` triggers a full automated redeploy. To verify the workflow ran, check the **Actions** tab in your GitHub repo.
+From this point forward, any push to `main` triggers a full automated redeploy, including nginx reloads. To verify the workflow ran, check the **Actions** tab in your GitHub repo.
 
 ---
 
