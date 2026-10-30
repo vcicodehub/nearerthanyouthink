@@ -1133,6 +1133,7 @@
       line-height: 1.8;
       margin: 0;
     }
+    .modal p.form-error { color: #a4452c; font-size: 0.875rem; line-height: 1.5; margin: -4px 0 14px; }
     .modal-note { font-size: 0.8rem !important; color: var(--ink-faint) !important; font-style: italic; }
     .form-field {
       margin-bottom: 14px;
@@ -1588,16 +1589,19 @@
     <span class="overline">Someone will genuinely pray for you</span>
     <h3>Request Prayer</h3>
     <p>You don't have to explain everything perfectly. Share what's on your heart (as much or as little as you'd like) and someone will pray for you with genuine care.</p>
-    <form onsubmit="handlePrayer(event)">
+    <form id="prayer-form" onsubmit="handlePrayer(event)">
       <div class="form-field">
-        <input type="text" placeholder="Your first name (optional)" autocomplete="given-name" />
+        <input type="text" name="name" maxlength="80" placeholder="Your first name (optional)" autocomplete="given-name" aria-label="Your first name (optional)" />
       </div>
       <div class="form-field">
-        <input type="email" placeholder="Email (optional, for a reply)" autocomplete="email" />
+        <input type="email" name="email" maxlength="200" placeholder="Email (optional, for a reply)" autocomplete="email" aria-label="Email (optional, for a reply)" />
       </div>
       <div class="form-field">
-        <textarea placeholder="What would you like prayer for?"></textarea>
+        <textarea name="message" maxlength="5000" required placeholder="What would you like prayer for?" aria-label="What would you like prayer for?"></textarea>
       </div>
+      <!-- Honeypot: hidden from people, bots fill it in -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;font-size:16px" />
+      <p class="form-error" id="prayer-error" role="alert" hidden></p>
       <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center">Send Prayer Request</button>
     </form>
     <p class="modal-note" style="margin-top:14px">Your information is kept private and will never be shared or used for marketing. This is a place of genuine care.</p>
@@ -2103,10 +2107,35 @@ function closeAllModals() {
 function closeOnBg(e, id) {
   if (e.target===e.currentTarget) closeM(id);
 }
-function handlePrayer(e) {
+async function handlePrayer(e) {
   e.preventDefault();
-  closeM('overlay-prayer');
-  openM('thanks');
+  const form = e.target;
+  const btn = form.querySelector('button[type=submit]');
+  const err = document.getElementById('prayer-error');
+  const data = Object.fromEntries(new FormData(form));
+  err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  try {
+    const r = await fetch('/api/prayer', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(body.error || 'We could not send your request just now. Please try again in a moment.');
+    form.reset();
+    closeM('overlay-prayer');
+    openM('thanks');
+  } catch (ex) {
+    err.textContent = ex.message.startsWith('Failed to fetch') || ex.name === 'TypeError'
+      ? 'We could not reach the server. Please check your connection and try again.'
+      : ex.message;
+    err.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Prayer Request';
+  }
 }
 
 /* ======================================================
