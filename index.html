@@ -649,7 +649,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
       flex-shrink: 0;
     }
     .r-text strong {
@@ -705,7 +704,9 @@
       transform: translateY(-5px);
     }
     .s-card:hover::after { transform: scaleX(1); }
-    .s-emoji { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+    .r-icon img { width: 34px; height: 34px; }
+    .s-icon { width: 60px; height: 60px; margin: -6px 0 12px -4px; display: block; }
+    .more-icon { width: 26px; height: 26px; flex-shrink: 0; }
     .s-card h3 {
       font-family: var(--sans);
       font-size: 1rem;
@@ -1398,28 +1399,28 @@
         </div>
         <div class="response-stack reveal delay-2">
           <button class="r-card" onclick="openM('follow')">
-            <div class="r-icon">✝</div>
+            <div class="r-icon"><img src="icons/follow.webp" alt="" width="34" height="34"></div>
             <div class="r-text">
               <strong>I want to follow Jesus</strong>
               <span>A simple prayer and a place to begin</span>
             </div>
           </button>
           <button class="r-card" onclick="openM('curious')">
-            <div class="r-icon">🔍</div>
+            <div class="r-icon"><img src="icons/curious.webp" alt="" width="34" height="34"></div>
             <div class="r-text">
               <strong>I'm curious, but not sure</strong>
               <span>Honest questions are welcome here</span>
             </div>
           </button>
           <button class="r-card" onclick="openM('prayer')">
-            <div class="r-icon">🙏</div>
+            <div class="r-icon"><img src="icons/prayer.webp" alt="" width="34" height="34"></div>
             <div class="r-text">
               <strong>I need prayer</strong>
               <span>Share what's on your heart</span>
             </div>
           </button>
           <button class="r-card" onclick="document.getElementById('carrying').scrollIntoView({behavior:'smooth'})">
-            <div class="r-icon">💬</div>
+            <div class="r-icon"><img src="icons/struggling.webp" alt="" width="34" height="34"></div>
             <div class="r-text">
               <strong>I'm struggling with something</strong>
               <span>Find honest words for what you're carrying</span>
@@ -1594,7 +1595,7 @@
 <div class="overlay" id="overlay-thanks" onclick="closeOnBg(event,'overlay-thanks')">
   <div class="modal" style="text-align:center;padding:52px 44px">
     <button class="modal-x" onclick="closeM('overlay-thanks')">✕</button>
-    <div style="font-size:2.4rem;margin-bottom:22px">🙏</div>
+    <img src="icons/prayer.webp" alt="" width="72" height="72" style="display:block;margin:0 auto 18px">
     <h3 style="margin-bottom:14px">Your request was received.</h3>
     <p>Someone will be praying for you. You are not forgotten.</p>
     <p class="modal-note">"The Lord is near to all who call on him." — Psalm 145:18</p>
@@ -1610,7 +1611,7 @@
 ====================================================== */
 const DATA = [
   {
-    id:'anxiety', emoji:'🫁', title:'Anxiety',
+    id:'anxiety', title:'Anxiety',
     short:'That constant tightness in your chest. The racing thoughts at 2 am. The fear you can\'t quite name.',
     ref:'Philippians 4:6–7',
     label:'For the anxious heart',
@@ -1633,7 +1634,7 @@ const DATA = [
     ]
   },
   {
-    id:'fear', emoji:'🌑', title:'Fear',
+    id:'fear', title:'Fear',
     short:'Fear of the future. Fear of failure. Fear of being truly known. Fear that everything will fall apart.',
     ref:'Isaiah 41:10',
     label:'For the afraid',
@@ -1654,7 +1655,7 @@ const DATA = [
     ]
   },
   {
-    id:'grief', emoji:'🕊️', title:'Grief',
+    id:'grief', title:'Grief',
     short:'Loss doesn\'t follow a schedule. Grief is messy and long and sometimes hits you out of nowhere.',
     ref:'Psalm 34:18',
     label:'For the grieving',
@@ -1676,7 +1677,7 @@ const DATA = [
     ]
   },
   {
-    id:'shame', emoji:'🫣', title:'Shame',
+    id:'shame', title:'Shame',
     short:'Not just guilt about what you\'ve done — but the feeling that you yourself are somehow the problem.',
     ref:'Romans 8:1',
     label:'For the ashamed',
@@ -1697,7 +1698,7 @@ const DATA = [
     ]
   },
   {
-    id:'loneliness', emoji:'🌧️', title:'Loneliness',
+    id:'loneliness', title:'Loneliness',
     short:'You can be surrounded by people and still feel completely unseen. That ache is real.',
     ref:'Psalm 68:6',
     label:'For the lonely',
@@ -1718,7 +1719,7 @@ const DATA = [
     ]
   },
   {
-    id:'doubt', emoji:'🔦', title:'Doubt',
+    id:'doubt', title:'Doubt',
     short:'Questioning everything doesn\'t mean you\'ve lost faith. It might mean you\'re finally being honest.',
     ref:'Mark 9:24',
     label:'For the doubting',
@@ -1739,7 +1740,7 @@ const DATA = [
     ]
   },
   {
-    id:'purpose', emoji:'🧭', title:'Purpose',
+    id:'purpose', title:'Purpose',
     short:'The quiet dread that your life might not matter. That you\'re missing the thing you were made for.',
     ref:'Jeremiah 29:11',
     label:'For the searching',
@@ -1760,7 +1761,7 @@ const DATA = [
     ]
   },
   {
-    id:'addiction', emoji:'🔗', title:'Addiction',
+    id:'addiction', title:'Addiction',
     short:'You know it\'s hurting you. You\'ve tried to stop. The cycle feels unbreakable.',
     ref:'John 8:36',
     label:'For the bound',
@@ -1781,7 +1782,7 @@ const DATA = [
     ]
   },
   {
-    id:'death', emoji:'🌅', title:'Death',
+    id:'death', title:'Death',
     short:'Your own mortality. The loss of someone you love. The questions death raises about what anything means.',
     ref:'John 11:25',
     label:'For those facing death',
@@ -1802,7 +1803,7 @@ const DATA = [
     ]
   },
   {
-    id:'anger', emoji:'🔥', title:'Anger',
+    id:'anger', title:'Anger',
     short:'Hot, burning, sometimes righteous, sometimes consuming. Anger that damages what you care about most.',
     ref:'Ephesians 4:26',
     label:'For the burning',
@@ -1823,7 +1824,7 @@ const DATA = [
     ]
   },
   {
-    id:'failure', emoji:'💔', title:'Failure',
+    id:'failure', title:'Failure',
     short:'A relationship, a career, a choice. The weight of something that didn\'t work — or something you broke.',
     ref:'Lamentations 3:22–23',
     label:'For the fallen',
@@ -1844,7 +1845,7 @@ const DATA = [
     ]
   },
   {
-    id:'forgiveness', emoji:'🌿', title:'Forgiveness',
+    id:'forgiveness', title:'Forgiveness',
     short:'Needing to forgive someone who hurt you. Or needing to receive forgiveness you\'re not sure you deserve.',
     ref:'Colossians 3:13',
     label:'On forgiveness',
@@ -1865,7 +1866,7 @@ const DATA = [
     ]
   },
   {
-    id:'stress', emoji:'⚡', title:'Stress',
+    id:'stress', title:'Stress',
     short:'Too much, too fast, for too long. The weight of demands that never let up.',
     ref:'Matthew 11:28–29',
     label:'For the overwhelmed',
@@ -1886,7 +1887,7 @@ const DATA = [
     ]
   },
   {
-    id:'far-from-god', emoji:'🌌', title:'Far from God',
+    id:'far-from-god', title:'Far from God',
     short:'You used to believe — or never did — but now God feels distant, silent, or impossible to reach.',
     ref:'James 4:8',
     label:'For the distant',
@@ -1916,7 +1917,7 @@ function renderGrid() {
   if (!g) return;
   g.innerHTML = DATA.map(s => `
     <div class="s-card reveal" onclick="showS('${s.id}')">
-      <span class="s-emoji" role="img" aria-label="${s.title}">${s.emoji}</span>
+      <img class="s-icon" src="icons/${s.id}.webp" alt="" width="60" height="60" loading="lazy">
       <h3>${s.title}</h3>
       <p>${s.short}</p>
       <span class="s-ref">${s.ref}</span>
@@ -2018,7 +2019,7 @@ function showS(id) {
       <h5>Explore more</h5>
       ${others.map(x=>`
         <button class="more-btn" onclick="showS('${x.id}')">
-          <span style="font-size:1.1rem">${x.emoji}</span>
+          <img class="more-icon" src="icons/${x.id}.webp" alt="" width="26" height="26" loading="lazy">
           <span>${x.title}</span>
         </button>
       `).join('')}

@@ -63,16 +63,6 @@ jobs:
           oauth-secret: ${{ secrets.TAILSCALE_OAUTH_SECRET }}
           tags: tag:ci
 
-      - name: Upload VPS config
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          port: ${{ secrets.VPS_PORT || 22 }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          source: "docker-compose.yml,nginx.conf"
-          target: ${{ secrets.DEPLOY_PATH }}
-
       - name: SSH and redeploy
         uses: appleboy/ssh-action@v1
         with:
@@ -80,16 +70,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           port: ${{ secrets.VPS_PORT || 22 }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          script: |
-            set -e
-            cd ${{ secrets.DEPLOY_PATH }}
-            sudo install -d -m 755 /var/www/certbot
-            docker compose pull nearerthanyouthink
-            docker compose up -d nearerthanyouthink
-            if [ -f /etc/letsencrypt/live/nearerthanyouthink.com/fullchain.pem ] && [ -f /etc/letsencrypt/live/nearerthanyouthink.com/privkey.pem ]; then
-              docker compose up -d nginx
-              docker compose exec -T nginx nginx -t
-              docker compose exec -T nginx nginx -s reload
-            else
-              echo "Skipping nginx start: Let's Encrypt certificate is not provisioned yet."
-            fi
+          # The stack lives in /opt/noor-luca/apps/nearerthanyouthink behind the
+          # shared edge nginx; deploy-app.sh pulls :latest and recreates only this container.
+          script: /opt/noor-luca/scripts/deploy-app.sh nearerthanyouthink
