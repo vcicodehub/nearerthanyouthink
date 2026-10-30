@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="600" height="160"
-     role="img" aria-label="Nearer Than You Think — nearerthanyouthink.com">
+     role="img" aria-label="Nearer Than You Think, nearerthanyouthink.com">
 
   <defs>
     <!-- Warm amber glow behind the mark -->
@@ -10,7 +10,7 @@
     </radialGradient>
   </defs>
 
-  <!-- Background — warm cream -->
+  <!-- Background: warm cream -->
   <rect width="600" height="160" fill="#f4efe6" rx="0"/>
 
   <!-- Ambient glow behind mark -->
@@ -22,7 +22,7 @@
   <line x1="26" y1="92" x2="98" y2="92"
         stroke="#a0733f" stroke-width="1.5" stroke-linecap="round"/>
 
-  <!-- Center ray — tallest -->
+  <!-- Center ray: tallest -->
   <line x1="62" y1="48" x2="62" y2="88"
         stroke="#a0733f" stroke-width="1.6" stroke-linecap="round"/>
 
@@ -32,7 +32,7 @@
   <line x1="77" y1="58" x2="77" y2="88"
         stroke="#a0733f" stroke-width="1.25" stroke-linecap="round" opacity="0.85"/>
 
-  <!-- Outer rays — shortest -->
+  <!-- Outer rays: shortest -->
   <line x1="33" y1="70" x2="33" y2="88"
         stroke="#a0733f" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
   <line x1="91" y1="70" x2="91" y2="88"
