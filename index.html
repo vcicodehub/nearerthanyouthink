@@ -14,6 +14,9 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=80" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#1e1a16" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -244,8 +247,11 @@
     .hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 5px;
-      padding: 4px;
+      width: 44px; height: 44px;
+      margin-right: -11px;
     }
     .hamburger span {
       display: block;
@@ -265,12 +271,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 44px;
+      gap: 36px;
+      padding: 0 24px;
+      text-align: center;
     }
     .drawer.open { display: flex; }
     .drawer-close {
       position: absolute;
-      top: 28px; right: 32px;
+      top: 16px; right: 16px;
+      width: 44px; height: 44px;
       font-size: 1.4rem;
       color: rgba(244,239,230,0.5);
       cursor: pointer;
@@ -278,7 +287,8 @@
     }
     .drawer a {
       font-family: var(--serif);
-      font-size: 2.2rem;
+      font-size: clamp(1.75rem, 7.5vw, 2.2rem);
+      line-height: 1.2;
       color: var(--cream);
       transition: color var(--dur);
     }
@@ -1134,7 +1144,7 @@
       border: 1.5px solid var(--border);
       border-radius: var(--r-sm);
       font-family: var(--sans);
-      font-size: 0.9375rem;
+      font-size: 1rem; /* 16px+ keeps iOS Safari from zooming on focus */
       color: var(--ink);
       background: #fff;
       transition: border-color var(--dur);
@@ -1144,6 +1154,7 @@
     .form-field input:focus,
     .form-field textarea:focus { border-color: var(--amber); }
     .form-field textarea { resize: vertical; min-height: 108px; }
+    .modal > .overline:first-of-type { display: block; padding-right: 40px; }
 
     /* ============================================================
        SCROLL REVEAL
@@ -1185,6 +1196,8 @@
       .modal { padding: 36px 28px; border-radius: var(--r-lg); }
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .hero-scroll { display: none; }
+      .hero-img { background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1000&q=75'); }
+      .footer-col a { padding: 6px 0; margin-bottom: 4px; }
     }
     @media (max-width: 480px) {
       .struggles-grid { grid-template-columns: 1fr; }
@@ -1475,9 +1488,9 @@
 <div id="page-detail" class="page">
   <div class="detail-hero">
     <div class="wrap-md">
-      <button class="back-btn" onclick="goHome()">
+      <button class="back-btn" onclick="goHome({restore:true})">
         <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Back to home
+        Back to all topics
       </button>
       <span class="overline" id="d-label"></span>
       <h1 class="d-xl" id="d-headline"></h1>
@@ -1580,7 +1593,7 @@
         <input type="text" placeholder="Your first name (optional)" autocomplete="given-name" />
       </div>
       <div class="form-field">
-        <input type="email" placeholder="Email (optional, if you'd like a personal response)" autocomplete="email" />
+        <input type="email" placeholder="Email (optional, for a reply)" autocomplete="email" />
       </div>
       <div class="form-field">
         <textarea placeholder="What would you like prayer for?"></textarea>
@@ -1929,7 +1942,7 @@ function renderGrid() {
 /* ======================================================
    SHOW STRUGGLE
 ====================================================== */
-function showS(id) {
+function showS(id, fromHistory) {
   const s = DATA.find(x => x.id === id);
   if (!s) return;
 
@@ -2025,8 +2038,10 @@ function showS(id) {
       `).join('')}
     </div>`;
 
+  if (!fromHistory && document.getElementById('page-home').classList.contains('active')) homeScrollY = window.scrollY;
   showPage('detail');
-  window.scrollTo({top:0,behavior:'smooth'});
+  if (!fromHistory && location.hash !== '#'+id) history.pushState(null, '', '#'+id);
+  window.scrollTo({top:0,behavior:'instant'});
 }
 
 /* ======================================================
@@ -2037,11 +2052,37 @@ function showPage(name) {
   const el = document.getElementById('page-'+name);
   if (el) el.classList.add('active');
 }
-function goHome() {
+// Topics live at #<id> so the phone's Back button returns to the list
+// (and topic links can be shared). homeScrollY remembers the grid position.
+let homeScrollY = null;
+function goHome(opts = {}) {
+  const fromTopic = document.getElementById('page-detail').classList.contains('active');
   showPage('home');
-  window.scrollTo({top:0,behavior:'smooth'});
+  if (fromTopic && !opts.fromHistory) history.pushState(null, '', location.pathname + location.search);
+  if (opts.to) document.getElementById(opts.to).scrollIntoView({behavior: fromTopic ? 'instant' : 'smooth'});
+  else if (opts.restore) {
+    if (homeScrollY === null) document.getElementById('carrying').scrollIntoView({behavior:'instant'});
+    else window.scrollTo({top:homeScrollY, behavior:'instant'});
+  }
+  else window.scrollTo({top:0, behavior: fromTopic ? 'instant' : 'smooth'});
   setTimeout(observeReveal, 80);
 }
+function route() {
+  const id = location.hash.slice(1);
+  if (DATA.some(s => s.id === id)) showS(id, true);
+  else if (document.getElementById('page-detail').classList.contains('active')) goHome({restore:true, fromHistory:true});
+}
+window.addEventListener('popstate', route);
+
+// In-page links: href="#" ones are JS-only (don't jump to top behind a modal),
+// and section anchors like #carrying work from a topic page too.
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  e.preventDefault();
+  const target = a.getAttribute('href').slice(1);
+  if (target) goHome({to: target});
+});
 
 /* ======================================================
    MODALS
@@ -2115,6 +2156,7 @@ document.addEventListener('keydown', e => {
 document.addEventListener('DOMContentLoaded', () => {
   renderGrid();
   observeReveal();
+  route();
 });
 </script>
 </body>
